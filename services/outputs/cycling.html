@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top">
+<head>
+  <title>Cycling Level - Cycling Calculator, Times and Standards</title>
+
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com/">
+        <link rel="dns-prefetch" href="https://cdn.fuseplatform.net/">
+    <link rel="dns-prefetch" href="https://cmp.inmobi.com/">
+    <link rel="dns-prefetch" href="https://securepubads.g.doubleclick.net/">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com/">
+        <link rel="preload" type="image/avif" imagesrcset="/images/cyclinglevelbackground-400.avif" as="image" media="(max-width: 768px)">
+    <link rel="preload" href="/images/logos/cyclinglevel-white-opt.svg" as="image">
+
+            <style>body,h1,hr,html,p{margin:0;padding:0}h1{font-size:100%;font-weight:400}.subtitle:not(:last-child),.title:not(:last-child){margin-bottom:1.5rem}.button{-webkit-touch-callout:none}.level:not(:last-child),.subtitle:not(:last-child),.title:not(:last-child){margin-bottom:1.5rem}body,h1,h2,h3,hr,html,p{margin:0;padding:0}@media screen and (max-width:768px){.is-size-2-mobile{font-size:2.5rem!important}.is-size-3-mobile{font-size:2rem!important}}.button,.input,.select select{-moz-appearance:none;-webkit-appearance:none;align-items:center;border:1px solid transparent;border-radius:4px;display:inline-flex;font-size:1rem;height:2.5em;justify-content:flex-start;line-height:1.5;padding-bottom:calc(.5em - 1px);padding-left:calc(.75em - 1px);padding-right:calc(.75em - 1px);padding-top:calc(.5em - 1px);position:relative;vertical-align:top}.button,.tabs{-webkit-touch-callout:none}.navbar-link:not(.is-arrowless)::after,.select:not(.is-multiple):not(.is-loading)::after{border:3px solid transparent;border-radius:2px;border-right:0;border-top:0;content:" ";display:block;height:.625em;margin-top:-.4375em;position:absolute;top:50%;transform:rotate(-45deg);transform-origin:center;width:.625em}.level:not(:last-child),.subtitle:not(:last-child),.tabs:not(:last-child),.title:not(:last-child){margin-bottom:1.5rem}.navbar-burger{-moz-appearance:none;-webkit-appearance:none;appearance:none;background:0 0;border:none;color:currentColor;font-family:inherit;font-size:1em;margin:0;padding:0}body,h1,h2,h3,hr,html,li,p,ul{margin:0;padding:0}h1,h2,h3{font-size:100%;font-weight:400}ul{list-style:none}button,input,select{margin:0}html{box-sizing:border-box}*,::after,::before{box-sizing:inherit}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}td:not([align]),th:not([align]){text-align:inherit}html{background-color:#fff;font-size:16px;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;min-width:300px;overflow-x:hidden;overflow-y:scroll;text-rendering:optimizeLegibility;text-size-adjust:100%}section{display:block}body,button,input,select{font-family:Helvetica,Arial,sans-serif}body{color:#4a4a4a;font-size:1em;font-weight:400;line-height:1.5}a{color:#2274a5;text-decoration:none}hr{background-color:#f5f5f5;border:none;display:block;height:2px;margin:1.5rem 0}img{height:auto;max-width:100%}span{font-style:inherit;font-weight:inherit}table td,table th{vertical-align:top}table td:not([align]),table th:not([align]){text-align:inherit}table th{color:#363636}.button{background-color:#fff;border-color:#dbdbdb;border-width:1px;color:#363636;justify-content:center;padding-bottom:calc(.5em - 1px);padding-left:1em;padding-right:1em;padding-top:calc(.5em - 1px);text-align:center;white-space:nowrap}.button.is-primary{background-color:#ee2e31;border-color:transparent;color:#fff}.button.is-large{font-size:1.5rem}.button.is-static{background-color:#f5f5f5;border-color:#dbdbdb;color:#7a7a7a}.container{flex-grow:1;margin:0 auto;position:relative;width:auto}@media screen and (min-width:1024px){.container{max-width:960px}}@media screen and (min-width:1216px){.container:not(.is-max-desktop){max-width:1152px}}@media screen and (min-width:1408px){.container:not(.is-max-desktop):not(.is-max-widescreen){max-width:1344px}}.table{background-color:#fff;color:#363636}.table td,.table th{border:1px solid #dbdbdb;border-width:0 0 1px;padding:.5em .75em;vertical-align:top}.table th{color:#363636}.table th:not([align]){text-align:inherit}.table thead{background-color:transparent}.table thead th{border-width:0 0 2px;color:#363636}.table tbody{background-color:transparent}.table tbody tr:last-child td{border-bottom-width:0}.table.is-fullwidth{width:100%}.table.is-striped tbody tr:not(.is-selected):nth-child(2n){background-color:#fafafa}.table-container{-webkit-overflow-scrolling:touch;overflow:auto;overflow-y:hidden;max-width:100%}.subtitle,.title{word-break:break-word}.title span{font-weight:inherit}.title{color:#363636;font-size:2rem;font-weight:600;line-height:1.125}.title:not(.is-spaced)+.subtitle{margin-top:-1.25rem}.subtitle{color:#4a4a4a;font-size:1.25rem;font-weight:400;line-height:1.25}.heading{display:block;font-size:11px;letter-spacing:1px;margin-bottom:5px;text-transform:uppercase}.input,.select select{background-color:#fff;border-color:#dbdbdb;border-radius:4px;color:#363636}.input{max-width:100%;width:100%}.select{display:inline-block;max-width:100%;position:relative;vertical-align:top}.select:not(.is-multiple){height:2.5em}.select:not(.is-multiple):not(.is-loading)::after{border-color:#2274a5;right:1.125em;z-index:4}.select select{display:block;font-size:1em;max-width:100%;outline:0}.select select::-ms-expand{display:none}.select select:not([multiple]){padding-right:2.5em}.select.is-fullwidth{width:100%}.select.is-fullwidth select{width:100%}.label{color:#363636;display:block;font-size:1rem;font-weight:700}.field:not(:last-child){margin-bottom:.75rem}.field.has-addons{display:flex;justify-content:flex-start}.field.has-addons .control:not(:last-child){margin-right:-1px}.field.has-addons .control:not(:first-child):not(:last-child) .button,.field.has-addons .control:not(:first-child):not(:last-child) .input{border-radius:0}.field.has-addons .control:first-child:not(:only-child) .input{border-bottom-right-radius:0;border-top-right-radius:0}.field.has-addons .control:last-child:not(:only-child) .button,.field.has-addons .control:last-child:not(:only-child) .input,.field.has-addons .control:last-child:not(:only-child) .select select{border-bottom-left-radius:0;border-top-left-radius:0}.field.has-addons .control.is-expanded{flex-grow:1;flex-shrink:1}.field-label .label{font-size:inherit}@media screen and (min-width:769px),print{.field.is-horizontal{display:flex}.field-label{flex-basis:0;flex-grow:1;flex-shrink:0;margin-right:1.5rem;text-align:right}.field-label.is-normal{padding-top:.375em}.field-body{display:flex;flex-basis:0;flex-grow:5;flex-shrink:1}.field-body .field{margin-bottom:0}.field-body>.field{flex-shrink:1}.field-body>.field:not(.is-narrow){flex-grow:1}}.control{box-sizing:border-box;clear:both;font-size:1rem;position:relative;text-align:inherit}.level{align-items:center;justify-content:space-between}@media screen and (min-width:769px),print{.level{display:flex}.level>.level-item:not(.is-narrow){flex-grow:1}}.level-item{align-items:center;display:flex;flex-basis:auto;flex-grow:0;flex-shrink:0;justify-content:center}.level-item .title{margin-bottom:0}@media screen and (max-width:768px){.field-label{margin-bottom:.5rem}.level-item:not(:last-child){margin-bottom:.75rem}}.navbar{background-color:#000;min-height:3.25rem;position:relative;z-index:30}.navbar.is-fixed-top{left:0;position:fixed;right:0;z-index:30}.navbar.is-fixed-top{top:0}html.has-navbar-fixed-top{padding-top:3.25rem}.navbar-brand{align-items:stretch;display:flex;flex-shrink:0;min-height:3.25rem}.navbar-burger{color:#fff;-moz-appearance:none;-webkit-appearance:none;appearance:none;background:0 0;border:none;display:block;height:3.25rem;position:relative;width:3.25rem;margin-left:auto}.navbar-burger span{background-color:currentColor;display:block;height:1px;left:calc(50% - 8px);position:absolute;transform-origin:center;width:16px}.navbar-burger span:first-child{top:calc(50% - 6px)}.navbar-burger span:nth-child(2){top:calc(50% - 1px)}.navbar-burger span:nth-child(3){top:calc(50% + 4px)}.navbar-menu{display:none}.navbar-item,.navbar-link{color:#fff;display:block;line-height:1.5;padding:.5rem .75rem;position:relative}.navbar-item{flex-grow:0;flex-shrink:0}.navbar-item img{max-height:1.75rem}.navbar-item.has-dropdown{padding:0}.navbar-link:not(.is-arrowless){padding-right:2.5em}.navbar-link:not(.is-arrowless)::after{border-color:#2274a5;margin-top:-.375em;right:1.125em}.navbar-dropdown{font-size:.875rem;padding-bottom:.5rem;padding-top:.5rem}.navbar-dropdown .navbar-item{padding-left:1.5rem;padding-right:1.5rem}.navbar-divider{background-color:#f5f5f5;border:none;display:none;height:2px;margin:.5rem 0}@media screen and (max-width:1023px){.navbar-brand .navbar-item{align-items:center;display:flex}.navbar-link::after{display:none}.navbar-menu{background-color:#000;padding:.5rem 0}.navbar.is-fixed-top .navbar-menu{-webkit-overflow-scrolling:touch;max-height:calc(100vh - 3.25rem);overflow:auto}}@media screen and (min-width:1024px){.navbar,.navbar-end,.navbar-menu,.navbar-start{align-items:stretch;display:flex}.navbar{min-height:3.25rem}.navbar-burger{display:none}.navbar-item,.navbar-link{align-items:center;display:flex}.navbar-item.has-dropdown{align-items:stretch}.navbar-menu{flex-grow:1;flex-shrink:0}.navbar-start{justify-content:flex-start;margin-right:auto}.navbar-end{justify-content:flex-end;margin-left:auto}.navbar-dropdown{background-color:#000;border-bottom-left-radius:6px;border-bottom-right-radius:6px;border-top:2px solid #dbdbdb;display:none;font-size:.875rem;left:0;min-width:100%;position:absolute;top:100%;z-index:20}.navbar-dropdown .navbar-item{padding:.375rem 1rem;white-space:nowrap}.navbar-dropdown a.navbar-item{padding-right:3rem}.navbar-divider{display:block}}.tabs{-webkit-overflow-scrolling:touch;align-items:stretch;display:flex;font-size:1rem;justify-content:space-between;overflow:hidden;overflow-x:auto;white-space:nowrap}.tabs a{align-items:center;border-bottom-color:#dbdbdb;border-bottom-style:solid;border-bottom-width:1px;color:#4a4a4a;display:flex;justify-content:center;margin-bottom:-1px;padding:.5em 1em;vertical-align:top}.tabs li{display:block}.tabs li.is-active a{border-bottom-color:#2274a5;color:#2274a5}.tabs ul{align-items:center;border-bottom-color:#dbdbdb;border-bottom-style:solid;border-bottom-width:1px;display:flex;flex-grow:1;flex-shrink:0;justify-content:flex-start}.tabs.is-toggle a{border-color:#dbdbdb;border-style:solid;border-width:1px;margin-bottom:0;position:relative}.tabs.is-toggle li+li{margin-left:-1px}.tabs.is-toggle li:first-child a{border-top-left-radius:4px;border-bottom-left-radius:4px}.tabs.is-toggle li:last-child a{border-top-right-radius:4px;border-bottom-right-radius:4px}.tabs.is-toggle li.is-active a{background-color:#2274a5;border-color:#2274a5;color:#fff;z-index:1}.tabs.is-toggle ul{border-bottom:none}.column{display:block;flex-basis:0;flex-grow:1;flex-shrink:1;padding:.75rem}@media screen and (min-width:1024px){.column.is-half-desktop{flex:none;width:50%}}.columns{margin-left:-.75rem;margin-right:-.75rem;margin-top:-.75rem}.columns:not(:last-child){margin-bottom:calc(1.5rem - .75rem)}.is-size-1{font-size:3rem!important}.is-size-2{font-size:2.5rem!important}.is-size-3{font-size:2rem!important}.is-size-4{font-size:1.5rem!important}.is-size-6{font-size:1rem!important}.has-text-centered{text-align:center!important}.has-text-right{text-align:right!important}.is-uppercase{text-transform:uppercase!important}.hero{align-items:stretch;display:flex;flex-direction:column;justify-content:space-between}.hero.is-primary{background-color:#ee2e31;color:#fff}.hero.is-primary .title{color:#fff}.hero.is-primary .subtitle{color:rgba(255,255,255,.9)}.hero.is-link{background-color:#2274a5;color:#fff}.hero.is-link .title{color:#fff}.hero.is-link .subtitle{color:rgba(255,255,255,.9)}.hero.is-link.is-bold{background-image:linear-gradient(141deg,#126b82 0,#2274a5 71%,#216ac0 100%)}.hero-body{flex-grow:1;flex-shrink:0;padding:3rem 1.5rem}@media screen and (min-width:769px),print{.columns:not(.is-desktop){display:flex}.hero-body{padding:3rem}}.section{padding:3rem 1.5rem}@media screen and (min-width:1024px){.section{padding:3rem}}.stars{display:inline-block}.star__full{color:gold}.star__half{color:#f2eac1}@media screen and (min-width:769px),print{.hero-body,.section{padding-left:5rem;padding-right:5rem}}@media screen and (max-width:768px){.is-size-2-mobile{font-size:2.5rem!important}.is-size-3-mobile{font-size:2rem!important}.is-size-4-mobile{font-size:1.5rem!important}.is-size-5-mobile{font-size:1.25rem!important}.tabs.is-small-mobile{font-size:.75rem}.table.is-fullwidth-mobile{width:100%}.table.is-narrow-mobile td,.table.is-narrow-mobile th{padding:.25em .5em}.publift_adtag_home_header,.publift_adtag_times_header{min-height:125px}.navbar-brand>.navbar-item:first-child{flex-grow:1}.navbar-burger{flex-shrink:0}}@media screen and (min-width:1024px){.hero-body,.section{padding-left:6rem;padding-right:6rem}.publift_adtag_home_header,.publift_adtag_times_header{min-height:250px}}.hero+.publift_adunit{margin-top:1.5rem}.has-background-image{background-image:url("/images/cyclinglevelbackground.jpg");background-image:image-set(url("/images/cyclinglevelbackground.avif") type("image/avif"),url("/images/cyclinglevelbackground.jpg"));background-position:-415px 17%}@media screen and (max-width:768px){.has-background-image{background-size:cover;background-position:center bottom;background-image:url("/images/cyclinglevelbackground-400.jpg");background-image:image-set(url("/images/cyclinglevelbackground-400.avif") type("image/avif"),url("/images/cyclinglevelbackground-400.jpg"))}}</style>
+
+      <link rel="preload" href="/cyclinglevel.5156b6eb85609b27ede9.css" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="/cyclinglevel.5156b6eb85609b27ede9.css">
+    </noscript>
+  
+      <link href="https://cyclinglevel.com/" rel="canonical">
+  
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <meta name="description" content="Calculate male/female cycling performance for all distances including 5k, 10k, 20k, 10 Miles and 20 Miles. Compare your races against other cyclists the same age. Compete with friends.">
+      
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cyclinglevel.com/share.jpg">
+
+      <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ED6VYT03SR"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', "G-ED6VYT03SR");
+  </script>
+  <script>document.addEventListener("DOMContentLoaded",function(){var e=Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"),0);function t(e,t){for(var l=e.querySelectorAll(".tabs li"),r=e.querySelectorAll(".tab"),a=0;a<l.length;a++){var n=l[a],c=r[a];n.classList.toggle("is-active",a===t),c.classList.toggle("is-hidden",a!==t)}}e.length>0&&e.forEach(function(e){e.addEventListener("click",function(){var t=e.dataset.target,l=document.getElementById(t);e.classList.toggle("is-active"),l.classList.toggle("is-active")})});for(var l=document.querySelectorAll(".tabs-container"),r=0;r<l.length;r++){for(var a=l[r],n=a.querySelectorAll(".tabs li"),c=0,i=0;i<n.length;i++){var o=n[i];o.classList.contains("is-active")&&(c=i);var s=function(e,l){return function(){t(e,l)}}(a,i);o.querySelector("a").addEventListener("click",s)}t(a,c)}});</script>
+
+      <script async src="https://cdn.fuseplatform.net/publift/tags/2/2934/fuse.js"></script>
+  </head>
+<body>
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item is-uppercase" href="/">
+      <img src="/images/logos/cyclinglevel-white-opt.svg" width="112" height="28" alt="Cycling Level">
+    </a>
+
+    
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+       data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">
+        Calculator
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="/cycling-times">
+          Cycling Times
+        </a>
+
+        <div class="navbar-dropdown">
+                      <a class="navbar-item" href="/cycling-times/5k-times"
+               title="5k Times For Cycling By Age And Ability">
+              5k Cycling Times
+            </a>
+                      <a class="navbar-item" href="/cycling-times/10k-times"
+               title="10k Times For Cycling By Age And Ability">
+              10k Cycling Times
+            </a>
+                      <a class="navbar-item" href="/cycling-times/20k-times"
+               title="20k Times For Cycling By Age And Ability">
+              20k Cycling Times
+            </a>
+                      <a class="navbar-item" href="/cycling-times/30k-times"
+               title="30k Times For Cycling By Age And Ability">
+              30k Cycling Times
+            </a>
+                      <a class="navbar-item" href="/cycling-times/40k-times"
+               title="40k Times For Cycling By Age And Ability">
+              40k Cycling Times
+            </a>
+                      <a class="navbar-item" href="/cycling-times/10-mile-times"
+               title="10 Mile Times For Cycling By Age And Ability">
+              10 Mile Cycling Times
+            </a>
+                      <a class="navbar-item" href="/cycling-times/20-mile-times"
+               title="20 Mile Times For Cycling By Age And Ability">
+              20 Mile Cycling Times
+            </a>
+                    <hr class="navbar-divider">
+          <a class="navbar-item" href="/cycling-times">
+            See All Cycling Times
+          </a>
+        </div>
+      </div>
+
+      
+      <a class="navbar-item" href="/about">
+        About
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <a class="navbar-item" href="https://strengthlevel.com/">
+        Strength Level: Calculate gym lifts
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <section class="hero is-primary has-background-image">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title is-size-1 is-size-2-mobile">
+          Calculate your cycling performance
+        </h1>
+        <p class="subtitle is-size-2 is-size-3-mobile">
+          Find out how fast you are for your age
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-half-desktop">
+                    <form method="post" action="#results">
+  <div class="title is-size-4">How fast/far did you cycle?</div>
+  <div class="subtitle is-size-6">
+    We will adapt your rating based
+    on your age/gender/bodyweight
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label for="distance" class="label">Distance</label>
+    </div>
+    <div class="field-body">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input name="distance" id="distance" class="input"
+                 type="number" min="1" max="99999" step="any"
+                 placeholder="distance"
+                 value="10">
+        </div>
+        <div class="control">
+          <div class="select">
+            <select name="distanceUnit" id="distanceUnit">
+                            <option >
+                km
+              </option>
+              <option selected>
+                mile
+              </option>
+              <option >
+                meter
+              </option>
+              <option >
+                yard
+              </option>
+            </select>
+
+                      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label for="timeMinutes" class="label">Time (h:m:s)</label>
+    </div>
+    <div class="field-body">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input name="timeHours" type="number"
+                 class="input" placeholder="hours" min="0"
+                 max="999" step="any"
+                 value="">
+        </div>
+        <div class="control">
+          <span class="button is-static">:</span>
+        </div>
+        <div class="control is-expanded">
+          <input name="timeMinutes" id="timeMinutes" type="number"
+                 class="input" placeholder="minutes"
+                 min="0" max="9999" step="any"
+                 value="40">
+        </div>
+        <div class="control">
+          <span class="button is-static">:</span>
+        </div>
+        <div class="control is-expanded">
+          <input name="timeSeconds" type="number"
+                 class="input" placeholder="seconds"
+                 min="0" max="99999" step="any"
+                 value="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label for="gender" class="label">Gender</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control is-expanded">
+          <div class="select is-fullwidth">
+            <select id="gender" name="gender">
+              <option value="male" selected>
+                Male
+              </option>
+              <option value="female" >
+                Female
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label for="age" class="label">Age</label>
+    </div>
+    <div class="field-body">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input name="age" id="age" class="input" type="number"
+                 placeholder="age"
+                 value="30"
+                 required>
+        </div>
+        <div class="control">
+          <span class="button is-static">years old</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <label for="bodyweight" class="label">Bodyweight</label>
+    </div>
+    <div class="field-body">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input type="number" id="bodyweight"
+                 name="bodyweight"
+                 min="5" max="400" step="any"
+                 class="input" placeholder="bodyweight"
+                 value="170" required>
+        </div>
+        <div class="control">
+          <div class="select">
+            <select name="bodyweightUnit" id="bodyweightUnit">
+              <option >
+                kg
+              </option>
+              <option selected>
+                lb
+              </option>
+            </select>
+
+                      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <!-- Left empty for spacing -->
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          <button type="submit" class="button is-large is-primary">
+            Calculate Performance
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+        </div>
+      </div>
+      <span id="results"></span>
+    </div>
+  </section>
+
+      <script>
+        gtag('event', 'calculate', {'event_category': 'homepage'});
+    </script>
+    <section class="hero is-link is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-size-2 is-size-3-mobile">
+        Your Cycling Level is Beginner
+        <span class="stars"><span class="star__full">★</span></span>
+      </h2>
+      <h3 class="subtitle is-size-3 is-size-4-mobile">
+        Over 10 miles you're faster than
+        9&nbsp;% of
+        male cyclists aged 30
+      </h3>
+
+      <h3 class="subtitle is-size-4 is-size-5-mobile">
+        What you entered
+      </h3>
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Distance</p>
+            <p class="title">10 miles</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Time</p>
+            <p class="title">40:00</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Speed (km/h / mph)</p>
+            <p class="title">24.1 / 15.0</p>
+          </div>
+        </div>
+      </nav>
+
+      <h3 class="subtitle is-size-4 is-size-5-mobile">
+        You are faster than
+      </h3>
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">male cyclists your age</p>
+            <p class="title">9&nbsp;%</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">All male cyclists</p>
+            <p class="title">9&nbsp;%</p>
+          </div>
+        </div>
+      </nav>
+
+      <h3 class="subtitle is-size-4">
+        Your Power Stats
+      </h3>
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Power (Watts)</p>
+            <p class="title">139&nbsp;W</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Watts/BW (w/kg)</p>
+            <p class="title">1.8</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">FTP (Watts)</p>
+            <p class="title">133&nbsp;W</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">km/mile Speed At FTP</p>
+            <p class="title">23.5 / 14.6&nbsp</p>
+          </div>
+        </div>
+      </nav>
+
+      <h3 class="subtitle is-size-4">
+        Your Fitness Stats
+      </h3>
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">O2 Cost</p>
+            <p class="title">25.1&nbsp;ml/kg/min</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Max VO2 Utilisation</p>
+            <p class="title">85&nbsp;%</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Effective VO2 Max</p>
+            <p class="title">29.7&nbsp;ml/kg/min</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Power at VO2 Max (Watts)</p>
+            <p class="title">165&nbsp;W</p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">km/mile Speed At VO2 Max</p>
+            <p class="title">26.4 / 16.4</p>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</section>
+  
+              <!-- 71161633/CYL_home_incontent_1/CYL_home_incontent_1 -->
+      <div data-fuse="22837639504" class="publift_adunit publift_adtag_home_incontent_1 publift_adid_22837639504"></div>
+      
+
+            <section class="section">
+  <div class="container">
+    <h2 class="title is-size-3">Male Cycling Times - 10 miles</h2>
+        <div class="tabs-container block">
+  <div class="tabs is-toggle is-small-mobile">
+    <ul>
+              <li class="is-active"><a>Finish Time</a></li>
+              <li><a>Speed (km/h)</a></li>
+              <li><a>Speed (mph)</a></li>
+              <li><a>Power (Watts)</a></li>
+              <li><a>Calories (per hour)</a></li>
+          </ul>
+  </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth is-narrow-mobile has-text-right">
+    <thead>
+    <tr><th style="width: 10%">Age</th><th style="width: 16%">Beginner</th><th style="width: 16%">Novice</th><th style="width: 16%">Intermediate</th><th style="width: 16%">Advanced</th><th style="width: 16%">Elite</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>20</td><td>42:18</td><td>36:34</td><td>32:38</td><td>29:51</td><td>27:50</td></tr>
+                <tr><td>25</td><td>42:18</td><td>36:34</td><td>32:38</td><td>29:51</td><td>27:50</td></tr>
+                <tr><td>30</td><td>42:18</td><td>36:34</td><td>32:38</td><td>29:51</td><td>27:50</td></tr>
+                <tr><td>35</td><td>42:35</td><td>36:48</td><td>32:52</td><td>30:03</td><td>28:01</td></tr>
+                <tr><td>40</td><td>43:43</td><td>37:47</td><td>33:44</td><td>30:52</td><td>28:46</td></tr>
+                <tr><td>45</td><td>45:31</td><td>39:20</td><td>35:07</td><td>32:08</td><td>29:57</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth is-narrow-mobile has-text-right">
+    <thead>
+    <tr><th style="width: 10%">Age</th><th style="width: 16%">Beginner</th><th style="width: 16%">Novice</th><th style="width: 16%">Intermediate</th><th style="width: 16%">Advanced</th><th style="width: 16%">Elite</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>20</td><td>22.8</td><td>26.4</td><td>29.6</td><td>32.3</td><td>34.7</td></tr>
+                <tr><td>25</td><td>22.8</td><td>26.4</td><td>29.6</td><td>32.3</td><td>34.7</td></tr>
+                <tr><td>30</td><td>22.8</td><td>26.4</td><td>29.6</td><td>32.3</td><td>34.7</td></tr>
+                <tr><td>35</td><td>22.7</td><td>26.2</td><td>29.4</td><td>32.1</td><td>34.5</td></tr>
+                <tr><td>40</td><td>22.1</td><td>25.6</td><td>28.6</td><td>31.3</td><td>33.6</td></tr>
+                <tr><td>45</td><td>21.2</td><td>24.5</td><td>27.5</td><td>30.1</td><td>32.2</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth is-narrow-mobile has-text-right">
+    <thead>
+    <tr><th style="width: 10%">Age</th><th style="width: 16%">Beginner</th><th style="width: 16%">Novice</th><th style="width: 16%">Intermediate</th><th style="width: 16%">Advanced</th><th style="width: 16%">Elite</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>20</td><td>14.2</td><td>16.4</td><td>18.4</td><td>20.1</td><td>21.6</td></tr>
+                <tr><td>25</td><td>14.2</td><td>16.4</td><td>18.4</td><td>20.1</td><td>21.6</td></tr>
+                <tr><td>30</td><td>14.2</td><td>16.4</td><td>18.4</td><td>20.1</td><td>21.6</td></tr>
+                <tr><td>35</td><td>14.1</td><td>16.3</td><td>18.3</td><td>20.0</td><td>21.4</td></tr>
+                <tr><td>40</td><td>13.7</td><td>15.9</td><td>17.8</td><td>19.4</td><td>20.9</td></tr>
+                <tr><td>45</td><td>13.2</td><td>15.3</td><td>17.1</td><td>18.7</td><td>20.0</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth is-narrow-mobile has-text-right">
+    <thead>
+    <tr><th style="width: 10%">Age</th><th style="width: 16%">Beginner</th><th style="width: 16%">Novice</th><th style="width: 16%">Intermediate</th><th style="width: 16%">Advanced</th><th style="width: 16%">Elite</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>20</td><td>126</td><td>165</td><td>205</td><td>246</td><td>286</td></tr>
+                <tr><td>25</td><td>126</td><td>165</td><td>205</td><td>246</td><td>286</td></tr>
+                <tr><td>30</td><td>126</td><td>165</td><td>205</td><td>246</td><td>286</td></tr>
+                <tr><td>35</td><td>125</td><td>162</td><td>202</td><td>243</td><td>282</td></tr>
+                <tr><td>40</td><td>119</td><td>155</td><td>192</td><td>230</td><td>266</td></tr>
+                <tr><td>45</td><td>111</td><td>144</td><td>178</td><td>212</td><td>245</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth is-narrow-mobile has-text-right">
+    <thead>
+    <tr><th style="width: 10%">Age</th><th style="width: 16%">Beginner</th><th style="width: 16%">Novice</th><th style="width: 16%">Intermediate</th><th style="width: 16%">Advanced</th><th style="width: 16%">Elite</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>20</td><td>607</td><td>752</td><td>905</td><td>1059</td><td>1209</td></tr>
+                <tr><td>25</td><td>607</td><td>752</td><td>905</td><td>1059</td><td>1209</td></tr>
+                <tr><td>30</td><td>607</td><td>752</td><td>905</td><td>1059</td><td>1209</td></tr>
+                <tr><td>35</td><td>602</td><td>744</td><td>894</td><td>1046</td><td>1193</td></tr>
+                <tr><td>40</td><td>581</td><td>714</td><td>855</td><td>998</td><td>1135</td></tr>
+                <tr><td>45</td><td>551</td><td>673</td><td>801</td><td>930</td><td>1053</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+  </div>
+      </div>
+</section>
+        
+                <!-- 71161633/CYL_times_incontent_1/CYL_times_incontent_1 -->
+      <div data-fuse="22837639501" class="publift_adunit publift_adtag_times_incontent_1 publift_adid_22837639501"></div>
+      
+
+          <section class="section">
+  <div class="container">
+    <h2 class="title is-size-3">Training Speed</h2>
+          <h3 class="subtitle is-size-4">These are your recommended speeds for your training runs at different intensities, most of your cycling distance should be done at lower intensities.</h3>
+        <div class="tabs-container block">
+  <div class="tabs is-toggle is-small-mobile">
+    <ul>
+              <li class="is-active"><a>Speed (km/h)</a></li>
+              <li><a>Speed (mph)</a></li>
+          </ul>
+  </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth-mobile">
+    <thead>
+    <tr><th style="width: 50%">Intensity</th><th class="has-text-right" style="width: 50%">Speed Range (km/h)</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>Easy</td><td class="has-text-right">22.4 - 19.5</td></tr>
+                <tr><td>Marathon</td><td class="has-text-right">24.0 - 22.6</td></tr>
+                <tr><td>Threshold</td><td class="has-text-right">25.0 - 24.2</td></tr>
+                <tr><td>Interval</td><td class="has-text-right">26.4 - 25.0</td></tr>
+                <tr><td>Repetition</td><td class="has-text-right">29.0 - 27.1</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth-mobile">
+    <thead>
+    <tr><th style="width: 50%">Intensity</th><th class="has-text-right" style="width: 50%">Speed Range (mph)</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>Easy</td><td class="has-text-right">13.9 - 12.1</td></tr>
+                <tr><td>Marathon</td><td class="has-text-right">14.9 - 14.0</td></tr>
+                <tr><td>Threshold</td><td class="has-text-right">15.5 - 15.0</td></tr>
+                <tr><td>Interval</td><td class="has-text-right">16.4 - 15.5</td></tr>
+                <tr><td>Repetition</td><td class="has-text-right">18.0 - 16.9</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+  </div>
+      </div>
+</section>
+              <section class="section">
+  <div class="container">
+    <h2 class="title is-size-3">Race Prediction</h2>
+          <h3 class="subtitle is-size-4">Based on your performance in the run entered above, we have predicted your maximum performance over some common race distances.</h3>
+        <div class="tabs-container block">
+  <div class="tabs is-toggle is-small-mobile">
+    <ul>
+              <li class="is-active"><a>Finish Time</a></li>
+              <li><a>Speed (km/h)</a></li>
+              <li><a>Speed (mph)</a></li>
+          </ul>
+  </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth-mobile">
+    <thead>
+    <tr><th style="width: 50%">Distance</th><th class="has-text-right" style="width: 50%">Finish Time</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>1k</td><td class="has-text-right">02:03</td></tr>
+                <tr><td>4k</td><td class="has-text-right">09:01</td></tr>
+                <tr><td>5k</td><td class="has-text-right">11:27</td></tr>
+                <tr><td>8k</td><td class="has-text-right">18:56</td></tr>
+                <tr><td>10k</td><td class="has-text-right">24:02</td></tr>
+                <tr><td>15k</td><td class="has-text-right">37:06</td></tr>
+                <tr><td>20k</td><td class="has-text-right">50:28</td></tr>
+                <tr><td>25k</td><td class="has-text-right">01:04:05</td></tr>
+                <tr><td>30k</td><td class="has-text-right">01:17:53</td></tr>
+                <tr><td>40k</td><td class="has-text-right">01:45:58</td></tr>
+                <tr><td>50k</td><td class="has-text-right">02:14:32</td></tr>
+                <tr><td>80k</td><td class="has-text-right">03:42:28</td></tr>
+                <tr><td>100k</td><td class="has-text-right">04:42:27</td></tr>
+                <tr><td>160k</td><td class="has-text-right">07:47:03</td></tr>
+                <tr><td>1 Mile</td><td class="has-text-right">03:24</td></tr>
+                <tr><td>5 Mile</td><td class="has-text-right">19:03</td></tr>
+                <tr><td>10 Mile</td><td class="has-text-right">40:00</td></tr>
+                <tr><td>20 Mile</td><td class="has-text-right">01:23:59</td></tr>
+                <tr><td>50 Mile</td><td class="has-text-right">03:43:51</td></tr>
+                <tr><td>100 Mile</td><td class="has-text-right">07:49:58</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth-mobile">
+    <thead>
+    <tr><th style="width: 50%">Distance</th><th class="has-text-right" style="width: 50%">Speed (km/h)</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>1k</td><td class="has-text-right">29.3</td></tr>
+                <tr><td>4k</td><td class="has-text-right">26.6</td></tr>
+                <tr><td>5k</td><td class="has-text-right">26.2</td></tr>
+                <tr><td>8k</td><td class="has-text-right">25.3</td></tr>
+                <tr><td>10k</td><td class="has-text-right">25.0</td></tr>
+                <tr><td>15k</td><td class="has-text-right">24.3</td></tr>
+                <tr><td>20k</td><td class="has-text-right">23.8</td></tr>
+                <tr><td>25k</td><td class="has-text-right">23.4</td></tr>
+                <tr><td>30k</td><td class="has-text-right">23.1</td></tr>
+                <tr><td>40k</td><td class="has-text-right">22.6</td></tr>
+                <tr><td>50k</td><td class="has-text-right">22.3</td></tr>
+                <tr><td>80k</td><td class="has-text-right">21.6</td></tr>
+                <tr><td>100k</td><td class="has-text-right">21.2</td></tr>
+                <tr><td>160k</td><td class="has-text-right">20.6</td></tr>
+                <tr><td>1 Mile</td><td class="has-text-right">28.4</td></tr>
+                <tr><td>5 Mile</td><td class="has-text-right">25.3</td></tr>
+                <tr><td>10 Mile</td><td class="has-text-right">24.1</td></tr>
+                <tr><td>20 Mile</td><td class="has-text-right">23.0</td></tr>
+                <tr><td>50 Mile</td><td class="has-text-right">21.6</td></tr>
+                <tr><td>100 Mile</td><td class="has-text-right">20.5</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth-mobile">
+    <thead>
+    <tr><th style="width: 50%">Distance</th><th class="has-text-right" style="width: 50%">Speed (mph)</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>1k</td><td class="has-text-right">18.2</td></tr>
+                <tr><td>4k</td><td class="has-text-right">16.5</td></tr>
+                <tr><td>5k</td><td class="has-text-right">16.3</td></tr>
+                <tr><td>8k</td><td class="has-text-right">15.8</td></tr>
+                <tr><td>10k</td><td class="has-text-right">15.5</td></tr>
+                <tr><td>15k</td><td class="has-text-right">15.1</td></tr>
+                <tr><td>20k</td><td class="has-text-right">14.8</td></tr>
+                <tr><td>25k</td><td class="has-text-right">14.5</td></tr>
+                <tr><td>30k</td><td class="has-text-right">14.4</td></tr>
+                <tr><td>40k</td><td class="has-text-right">14.1</td></tr>
+                <tr><td>50k</td><td class="has-text-right">13.9</td></tr>
+                <tr><td>80k</td><td class="has-text-right">13.4</td></tr>
+                <tr><td>100k</td><td class="has-text-right">13.2</td></tr>
+                <tr><td>160k</td><td class="has-text-right">12.8</td></tr>
+                <tr><td>1 Mile</td><td class="has-text-right">17.6</td></tr>
+                <tr><td>5 Mile</td><td class="has-text-right">15.7</td></tr>
+                <tr><td>10 Mile</td><td class="has-text-right">15.0</td></tr>
+                <tr><td>20 Mile</td><td class="has-text-right">14.3</td></tr>
+                <tr><td>50 Mile</td><td class="has-text-right">13.4</td></tr>
+                <tr><td>100 Mile</td><td class="has-text-right">12.8</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+  </div>
+      </div>
+</section>
+              <section class="section">
+  <div class="container">
+    <h2 class="title is-size-3">Bodyweight Prediction</h2>
+          <h3 class="subtitle is-size-4">Based on the assumption that you are only gaining or losing body fat, we can estimate how fast you would be at your current level of fitness.</h3>
+        <div class="tabs-container block">
+  <div class="tabs is-toggle is-small-mobile">
+    <ul>
+              <li class="is-active"><a>Finish Time</a></li>
+              <li><a>Speed (km/h)</a></li>
+              <li><a>Speed (mph)</a></li>
+          </ul>
+  </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth-mobile has-text-right">
+    <thead>
+    <tr><th style="width: 33%">Bodyweight (lb)</th><th style="width: 33%">Finish Time</th><th style="width: 34%">Difference</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>142</td><td>38:12</td><td>-01:48</td></tr>
+                <tr><td>146</td><td>38:27</td><td>-01:33</td></tr>
+                <tr><td>150</td><td>38:42</td><td>-01:18</td></tr>
+                <tr><td>154</td><td>38:57</td><td>-01:03</td></tr>
+                <tr><td>158</td><td>39:13</td><td>-00:47</td></tr>
+                <tr><td>162</td><td>39:29</td><td>-00:32</td></tr>
+                <tr><td>166</td><td>39:44</td><td>-00:16</td></tr>
+                <tr><td>170</td><td>40:00</td><td>+00:00</td></tr>
+                <tr><td>174</td><td>40:16</td><td>+00:16</td></tr>
+                <tr><td>178</td><td>40:32</td><td>+00:32</td></tr>
+                <tr><td>182</td><td>40:48</td><td>+00:48</td></tr>
+                <tr><td>186</td><td>41:05</td><td>+01:05</td></tr>
+                <tr><td>190</td><td>41:21</td><td>+01:21</td></tr>
+                <tr><td>194</td><td>41:38</td><td>+01:38</td></tr>
+                <tr><td>198</td><td>41:55</td><td>+01:55</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth-mobile has-text-right">
+    <thead>
+    <tr><th style="width: 33%">Bodyweight (lb)</th><th style="width: 33%">Speed (km/h)</th><th style="width: 34%">Difference</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>142</td><td>25.3</td><td>+1.1</td></tr>
+                <tr><td>146</td><td>25.1</td><td>+1.0</td></tr>
+                <tr><td>150</td><td>24.9</td><td>+0.8</td></tr>
+                <tr><td>154</td><td>24.8</td><td>+0.6</td></tr>
+                <tr><td>158</td><td>24.6</td><td>+0.5</td></tr>
+                <tr><td>162</td><td>24.5</td><td>+0.3</td></tr>
+                <tr><td>166</td><td>24.3</td><td>+0.2</td></tr>
+                <tr><td>170</td><td>24.1</td><td>+0.0</td></tr>
+                <tr><td>174</td><td>24.0</td><td>-0.2</td></tr>
+                <tr><td>178</td><td>23.8</td><td>-0.3</td></tr>
+                <tr><td>182</td><td>23.7</td><td>-0.5</td></tr>
+                <tr><td>186</td><td>23.5</td><td>-0.6</td></tr>
+                <tr><td>190</td><td>23.3</td><td>-0.8</td></tr>
+                <tr><td>194</td><td>23.2</td><td>-0.9</td></tr>
+                <tr><td>198</td><td>23.0</td><td>-1.1</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+      <div class="tab">
+      <div class="table-container">
+  <table class="table is-striped is-fullwidth-mobile has-text-right">
+    <thead>
+    <tr><th style="width: 33%">Bodyweight (lb)</th><th style="width: 33%">Speed (mph)</th><th style="width: 34%">Difference</th></tr>
+    </thead>
+    <tbody>
+                <tr><td>142</td><td>15.7</td><td>+0.7</td></tr>
+                <tr><td>146</td><td>15.6</td><td>+0.6</td></tr>
+                <tr><td>150</td><td>15.5</td><td>+0.5</td></tr>
+                <tr><td>154</td><td>15.4</td><td>+0.4</td></tr>
+                <tr><td>158</td><td>15.3</td><td>+0.3</td></tr>
+                <tr><td>162</td><td>15.2</td><td>+0.2</td></tr>
+                <tr><td>166</td><td>15.1</td><td>+0.1</td></tr>
+                <tr><td>170</td><td>15.0</td><td>+0.0</td></tr>
+                <tr><td>174</td><td>14.9</td><td>-0.1</td></tr>
+                <tr><td>178</td><td>14.8</td><td>-0.2</td></tr>
+                <tr><td>182</td><td>14.7</td><td>-0.3</td></tr>
+                <tr><td>186</td><td>14.6</td><td>-0.4</td></tr>
+                <tr><td>190</td><td>14.5</td><td>-0.5</td></tr>
+                <tr><td>194</td><td>14.4</td><td>-0.6</td></tr>
+                <tr><td>198</td><td>14.3</td><td>-0.7</td></tr>
+        </tbody>
+  </table>
+</div>
+    </div>
+  </div>
+      </div>
+</section>
+      
+  
+                  <!-- 71161633/CYL_times_incontent_2/CYL_times_incontent_2 -->
+      <div data-fuse="22837639510" class="publift_adunit publift_adtag_times_incontent_2 publift_adid_22837639510"></div>
+      
+
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-3 is-size-4-mobile">What do the cycling abilities mean?</h2>
+<table class="table">
+  <tbody>
+  <tr>
+    <th>Beginner</th>
+    <td>
+      Faster than 5% of cyclists. A beginner cyclist has started cycling
+      and has cycled for at least a month.
+    </td>
+  </tr>
+
+  <tr>
+    <th>Novice</th>
+    <td>
+      Faster than 20% of cyclists. A novice cyclist has cycled regularly
+      for at least six months.
+    </td>
+  </tr>
+
+  <tr>
+    <th>Intermediate</th>
+    <td>
+      Faster than 50% of cyclists. An intermediate cyclist has cycled
+      regularly for at least two years.
+    </td>
+  </tr>
+
+  <tr>
+    <th>Advanced</th>
+    <td>Faster than 80% of cyclists. An advanced cyclist has cycled for
+      over five years.
+    </td>
+  </tr>
+
+  <tr>
+    <th>Elite</th>
+    <td>
+      Faster than 95% of cyclists. An elite cyclist has dedicated over five years to become
+      competitive at cycling.
+    </td>
+  </tr>
+  </tbody>
+</table>
+      </div>
+    </section>
+  
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-size-4">Cycling Times</h2>
+      <h3 class="subtitle is-size-6">We have male and female cycling times for all
+        common cycling distances
+        like 5k, 10k, 20k, 10 Miles and 20 Miles.</h3>
+      <div class="buttons">
+      <a class="button is-link"
+       href="/cycling-times/5k-times"
+       title="5k Cycling Times">5k Times</a>
+      <a class="button is-link"
+       href="/cycling-times/10k-times"
+       title="10k Cycling Times">10k Times</a>
+      <a class="button is-link"
+       href="/cycling-times/20k-times"
+       title="20k Cycling Times">20k Times</a>
+      <a class="button is-link"
+       href="/cycling-times/30k-times"
+       title="30k Cycling Times">30k Times</a>
+      <a class="button is-link"
+       href="/cycling-times/40k-times"
+       title="40k Cycling Times">40k Times</a>
+      <a class="button is-link"
+       href="/cycling-times/10-mile-times"
+       title="10 Mile Cycling Times">10 Mile Times</a>
+      <a class="button is-link"
+       href="/cycling-times/20-mile-times"
+       title="20 Mile Cycling Times">20 Mile Times</a>
+  </div>
+  <div class="buttons">
+    <a class="button is-primary" href="/cycling-times">See All Cycling Times</a>
+  </div>
+
+    </div>
+  </section>
+
+  <div class="section">
+  <div class="container">
+    <h2 class="title is-size-4">Fitness Standards</h2>
+    <h3 class="subtitle is-size-6">
+      We provide strength and fitness calculators for strength training, and cardio standards for
+      running, rowing, swimming and cycling. How fit are you?
+    </h3>
+    <div class="buttons">
+      <a href="https://strengthlevel.com/?utm_source=cyclinglevel&utm_medium=home_footer&utm_campaign=othersites"
+         class="button" style="background-color: #004977; min-width: 155px;" target="_blank">
+        <img loading="lazy" src="/images/logos/strengthlevel-white-opt.svg" width="113" height="28"
+             alt="Strength Level Logo">
+      </a>
+      <a href="https://runninglevel.com/?utm_source=cyclinglevel&utm_medium=home_footer&utm_campaign=othersites"
+         class="button" style="background-color: #f0d500; min-width: 155px;" target="_blank">
+        <img loading="lazy" src="/images/logos/runninglevel-opt.svg" width="112" height="28"
+             alt="Running Level Logo">
+      </a>
+      <a href="https://rowinglevel.com/?utm_source=cyclinglevel&utm_medium=home_footer&utm_campaign=othersites"
+         class="button" style="background-color: #abcc33; min-width: 155px;" target="_blank">
+        <img loading="lazy" src="/images/logos/rowinglevel-opt.svg" width="112" height="28"
+             alt="Rowing Level Logo">
+      </a>
+      <a href="https://swimminglevel.com/?utm_source=cyclinglevel&utm_medium=home_footer&utm_campaign=othersites"
+         class="button" style="background-color: #2299aa; min-width: 155px;" target="_blank">
+        <img loading="lazy" src="/images/logos/swimminglevel-opt.svg" width="121" height="28"
+             alt="Swimming Level Logo">
+      </a>
+      <a href="https://cyclinglevel.com/?utm_source=cyclinglevel&utm_medium=home_footer&utm_campaign=othersites"
+         class="button" style="background-color: #EE2E31; min-width: 155px;" target="_blank">
+        <img loading="lazy" src="/images/logos/cyclinglevel-white-opt.svg" width="112" height="28"
+             alt="Cycling Level Logo">
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer footer--stickyadvert">
+  <div class="content has-text-centered">
+    <p>
+      Built by <a href="https://strengthlevel.com/">Strength Level</a>.
+      Something wrong? Let us know how we can improve using our
+      <a href="https://forms.gle/kWna3zEuJDZhbgNd7" target="_blank">Feedback Form</a> or
+      <a href="https://www.facebook.com/strengthlevel" target="_blank">Facebook Page</a>.
+    </p>
+    <p>
+      <a href="/about">
+        About
+      </a>
+      -
+      <a href="/privacy-policy">
+        Privacy Policy
+      </a>
+    </p>
+  </div>
+</footer>
+</body>
+</html>
