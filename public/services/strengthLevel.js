@@ -16,11 +16,14 @@ const parseHTML = (htmlText) => __awaiter(void 0, void 0, void 0, function* () {
         // Load the HTML into cheerio
         const $ = cheerio.load(htmlText);
         // one-rep max
-        const oneRepMax = $('.section-box.liftresult div#liftResults .content').text().match(/\b\d+(\.\d+)?\b/g)[0];
+        const oneRepMaxMatch = $('.section-box.liftresult div#liftResults .content').text().match(/\b\d+(\.\d+)?\b/g);
+        const oneRepMax = oneRepMaxMatch ? oneRepMaxMatch[0] : null;
         // comparison value
-        const compare = $('.section-box.liftresult div#liftResults div.columns > :first-child p strong').text().match(/\b\d+(\.\d+)?\b/g)[0];
+        const compareMatch = $('.section-box.liftresult div#liftResults div.columns > :first-child p strong').text().match(/\b\d+(\.\d+)?\b/g);
+        const compare = compareMatch ? compareMatch[0] : null;
         // lift value
-        const lift = $('.section-box.liftresult div#liftResults div.columns > :last-child p strong').text().match(/\b\d+(\.\d+)?\b/g)[0];
+        const liftMatch = $('.section-box.liftresult div#liftResults div.columns > :last-child p strong').text().match(/\b\d+(\.\d+)?\b/g);
+        const lift = liftMatch ? liftMatch[0] : null;
         // strength bound table headers and rows
         const headers = $('.section-box.liftresult .liftresult__standards table thead tr th')
             .map((i, el) => $(el).text().replace(/['".]/g, "").trim().toLowerCase())
@@ -80,18 +83,24 @@ const parseHTML = (htmlText) => __awaiter(void 0, void 0, void 0, function* () {
         console.log('Strength Bounds:', renamedObj);
         console.log('Body Weight:', bodyWeight);
         // TODO: add interface for output
-        return {
+        const results = {
             strengthLevel,
             bodyWeight,
             next_strength_level,
-            one_rep_max: parseFloat(oneRepMax),
-            relative_strength_demographic: parseFloat(compare),
-            relative_strength: parseFloat(lift),
+            one_rep_max: oneRepMax ? parseFloat(oneRepMax) : -1,
+            relative_strength_demographic: compare ? parseFloat(compare) : -1,
+            relative_strength: lift ? parseFloat(lift) : -1,
             strengthBounds: renamedObj
         };
+        return results;
     }
     catch (error) {
-        console.error('Error:', error.message);
+        if (error instanceof Error) {
+            console.error(error.message);
+        }
+        else {
+            console.error('An unknown error occurred');
+        }
     }
 });
 // NOTE: Variation applies to some exercises are can take on values: bodyweight, weighted, assisted

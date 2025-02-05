@@ -2,9 +2,17 @@ import axios from 'axios';
 import qs from 'qs';
 import 'dotenv/config';
 import cheerio from 'cheerio';
-import { User, StrengthUser} from '../interfaces/types.js';
+import {StrengthUser} from '../interfaces/types.js';
 
-interface StrengthInput extends User, StrengthUser {}
+interface StrengthResult {
+  strengthLevel: string;
+  bodyWeight: number;
+  next_strength_level: string;
+  one_rep_max: number;
+  relative_strength_demographic: number;
+  relative_strength: number;
+  strengthBounds: Record<string, number>;
+}
 
 const parseHTML = async (htmlText: string) => {
     try {
@@ -12,23 +20,28 @@ const parseHTML = async (htmlText: string) => {
       const $ = cheerio.load(htmlText);
   
       // one-rep max
-      const oneRepMax = $('.section-box.liftresult div#liftResults .content').text().match(/\b\d+(\.\d+)?\b/g)[0];
+      const oneRepMaxMatch: RegExpMatchArray | null = $('.section-box.liftresult div#liftResults .content').text().match(/\b\d+(\.\d+)?\b/g)
+      const oneRepMax: string | null = oneRepMaxMatch ? oneRepMaxMatch[0] : null;
   
       // comparison value
-      const compare = $('.section-box.liftresult div#liftResults div.columns > :first-child p strong').text().match(/\b\d+(\.\d+)?\b/g)[0];
+      const compareMatch: RegExpMatchArray | null = $('.section-box.liftresult div#liftResults div.columns > :first-child p strong').text().match(/\b\d+(\.\d+)?\b/g)
+      const compare: string | null = compareMatch ? compareMatch[0] : null;
+  
   
       // lift value
-      const lift = $('.section-box.liftresult div#liftResults div.columns > :last-child p strong').text().match(/\b\d+(\.\d+)?\b/g)[0];
+      const liftMatch: RegExpMatchArray | null = $('.section-box.liftresult div#liftResults div.columns > :last-child p strong').text().match(/\b\d+(\.\d+)?\b/g)
+      const lift: string | null = liftMatch ? liftMatch[0] : null
+
   
       // strength bound table headers and rows
-      const headers = $('.section-box.liftresult .liftresult__standards table thead tr th')
+      const headers:string[] = $('.section-box.liftresult .liftresult__standards table thead tr th')
       .map((i, el) => $(el).text().replace(/['".]/g, "").trim().toLowerCase())
       .get();
 
       let strengthLevel = 'beginner';
       let next_strength_level = 'novice';
-      const rows = $('.section-box.liftresult .liftresult__standards table tbody tr td')
-      .map((i, el) => {
+      const rows: number[] = $('.section-box.liftresult .liftresult__standards table tbody tr td')
+      .map((i: number, el) => {
         const $el = $(el);
         const value = $el.text().replace(/['".]/g, "").trim();
         const hasHighlightClass = $el.hasClass('has-background-tablehighlight'); 
@@ -76,8 +89,8 @@ const parseHTML = async (htmlText: string) => {
 
 
       // rename keys 
-      const keysMap = { 'beg': 'beginner', 'nov': 'novice', 'int': 'intermediate', 'adv': 'advanced' };
-      const renamedObj = Object.fromEntries(
+      const keysMap: {[key: string]: string} = { 'beg': 'beginner', 'nov': 'novice', 'int': 'intermediate', 'adv': 'advanced' };
+      const renamedObj: {[key: string]: any}  = Object.fromEntries(
         Object.entries(strengthBounds).map(([key, value]) => [keysMap[key] || key, value])
       );
   
@@ -88,23 +101,30 @@ const parseHTML = async (htmlText: string) => {
       console.log('Body Weight:', bodyWeight);
 
       // TODO: add interface for output
-      return {
+      const results: StrengthResult = {
         strengthLevel,
         bodyWeight,
         next_strength_level,
-        one_rep_max: parseFloat(oneRepMax),
-        relative_strength_demographic: parseFloat(compare),
-        relative_strength: parseFloat(lift),
+        one_rep_max: oneRepMax ? parseFloat(oneRepMax) : -1,
+        relative_strength_demographic: compare ? parseFloat(compare) : -1,
+        relative_strength: lift ? parseFloat(lift) : -1,
         strengthBounds: renamedObj
     }
-    } catch (error) {
-      console.error('Error:', error.message);
+    return results
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(error.message)
+      } else {
+        console.error('An unknown error occurred')
+      }
     }
   };
   
 // NOTE: Variation applies to some exercises are can take on values: bodyweight, weighted, assisted
-const calculateStrength = async (input : StrengthInput) =>{
+const calculateStrength = async (input : StrengthUser) =>{
+
     try{
+    
       const {
         gender,
         ageYears,
@@ -119,6 +139,7 @@ const calculateStrength = async (input : StrengthInput) =>{
         assistanceMass,
         extraMass
       } = input
+
 
       const exerciseNameValue = exerciseName.toLowerCase().replace(/ /g, "-");
       // NOTE: The API will accept post body as url encoded string, type does not matter here
@@ -143,7 +164,7 @@ const calculateStrength = async (input : StrengthInput) =>{
         
         const filteredFormData = Object.entries(formData)
         .filter(([key, value]) => value != null) 
-        .reduce((acc, [key, value]) => {
+        .reduce((acc: any, [key, value]) => {
             acc[key] = value;
             return acc;
         }, {});
@@ -172,7 +193,7 @@ const calculateStrength = async (input : StrengthInput) =>{
       
         
   
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error:', error.message);
     throw error;  
   }

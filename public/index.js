@@ -1,11 +1,12 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { Service } from './interfaces/types.js';
+import { Variation, Gender, Service } from './enums/types';
+import { getEnumFromString } from './utils/conversions.js';
 import strengthCalculator from './services/strengthLevel.js';
-import rowCalculator from './services/rowLevel.js';
-import runCalculator from './services/runningLevel.js';
-import cycleCalculator from './services/cycleLevel.js';
-import swimCalculator from './services/swimLevel.js';
+// import rowCalculator from './services/rowLevel.js';
+// import runCalculator from './services/runningLevel.js';
+// import cycleCalculator from './services/cycleLevel.js';
+// import swimCalculator from './services/swimLevel.js';
 const app = express();
 const port = 3000;
 app.use(bodyParser.json());
@@ -22,24 +23,32 @@ app.post('/', (req, res) => {
     if (!service || !userInput) {
         return res.status(400).send({ success: false, error: 'Missing required params' });
     }
-    // TODO: Convert gender and variation to enum values
+    if (userInput.gender !== 'male' && userInput.gender !== 'female') {
+        return res.status(400).send({ success: false, error: 'Invalid gender' });
+    }
+    else {
+        const gender = getEnumFromString(userInput.gender, Gender);
+    }
+    if (userInput.variation) {
+        const variation = getEnumFromString(userInput.variation, Variation);
+    }
     try {
         switch (service) {
             case Service.Strength:
                 result = strengthCalculator(userInput);
                 break;
-            case Service.Row:
-                result = rowCalculator(userInput);
-                break;
-            case Service.Swim:
-                result = swimCalculator(userInput);
-                break;
-            case Service.Run:
-                result = runCalculator(userInput);
-                break;
-            case Service.Cycle:
-                result = cycleCalculator(userInput);
-                break;
+            // case Service.Row:
+            //     result = rowCalculator(userInput as CardioUser);
+            //     break;
+            // case Service.Swim:
+            //     result = swimCalculator(userInput as CardioUser);
+            //     break;
+            // case Service.Run:
+            //     result = runCalculator(userInput as CardioUser);
+            //     break;
+            // case Service.Cycle:
+            //     result = cycleCalculator(userInput as CardioUser);
+            //     break;
             default:
                 return res.status(400).send({ success: false, error: 'Unknown service' });
         }
