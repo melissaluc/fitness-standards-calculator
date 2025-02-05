@@ -1,10 +1,12 @@
-const axios = require('axios');
-const qs = require('qs');
-require("dotenv").config();
-const cheerio = require('cheerio');
+import axios from 'axios';
+import qs from 'qs';
+import 'dotenv/config';
+import cheerio from 'cheerio';
+import { User, StrengthUser} from '../interfaces/types.js';
 
+interface StrengthInput extends User, StrengthUser {}
 
-const parseHTML = async (htmlText) => {
+const parseHTML = async (htmlText: string) => {
     try {
       // Load the HTML into cheerio
       const $ = cheerio.load(htmlText);
@@ -85,6 +87,7 @@ const parseHTML = async (htmlText) => {
       console.log('Strength Bounds:', renamedObj);
       console.log('Body Weight:', bodyWeight);
 
+      // TODO: add interface for output
       return {
         strengthLevel,
         bodyWeight,
@@ -99,25 +102,26 @@ const parseHTML = async (htmlText) => {
     }
   };
   
-// Variation applies to some exercises are can take on values: bodyweight, weighted, assisted
-const calculateStrength = async (
-    gender,
-    ageYears,
-    bodyMass,
-    bodyMassUnit,
-    exerciseName,
-    liftMass,
-    liftMassUnit,
-    sets,
-    repetitions,
-    variation,
-    assistanceMass,
-    extraMass
-
-) =>{
+// NOTE: Variation applies to some exercises are can take on values: bodyweight, weighted, assisted
+const calculateStrength = async (input : StrengthInput) =>{
     try{
+      const {
+        gender,
+        ageYears,
+        bodyMass,
+        bodyMassUnit,
+        exerciseName,
+        liftMass,
+        liftMassUnit,
+        sets,
+        repetitions,
+        variation,
+        assistanceMass,
+        extraMass
+      } = input
 
       const exerciseNameValue = exerciseName.toLowerCase().replace(/ /g, "-");
+      // NOTE: The API will accept post body as url encoded string, type does not matter here
       const formData = {
           "gender": gender,
           "ageyears": ageYears,
@@ -171,23 +175,6 @@ const calculateStrength = async (
   } catch (error) {
     console.error('Error:', error.message);
     throw error;  
+  }
 }
-  
-}
-
-// strength(    
-//     "female",
-//     30,
-//     132,
-//     'lb',
-//     'hip-thrust',
-//     110,
-//     'lb',
-//     12,
-//     null,
-//     null,
-//     null)
-
-module.exports = {
-  calculateStrength
-}
+export default calculateStrength;

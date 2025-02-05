@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,10 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const axios = require('axios');
-const qs = require('qs');
-require("dotenv").config();
-const cheerio = require('cheerio');
+import axios from 'axios';
+import qs from 'qs';
+import 'dotenv/config';
+import cheerio from 'cheerio';
 const parseHTML = (htmlText) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Load the HTML into cheerio
@@ -80,6 +79,7 @@ const parseHTML = (htmlText) => __awaiter(void 0, void 0, void 0, function* () {
         console.log('Lift:', lift);
         console.log('Strength Bounds:', renamedObj);
         console.log('Body Weight:', bodyWeight);
+        // TODO: add interface for output
         return {
             strengthLevel,
             bodyWeight,
@@ -94,10 +94,12 @@ const parseHTML = (htmlText) => __awaiter(void 0, void 0, void 0, function* () {
         console.error('Error:', error.message);
     }
 });
-// Variation applies to some exercises are can take on values: bodyweight, weighted, assisted
-const calculateStrength = (gender, ageYears, bodyMass, bodyMassUnit, exerciseName, liftMass, liftMassUnit, sets, repetitions, variation, assistanceMass, extraMass) => __awaiter(void 0, void 0, void 0, function* () {
+// NOTE: Variation applies to some exercises are can take on values: bodyweight, weighted, assisted
+const calculateStrength = (input) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const { gender, ageYears, bodyMass, bodyMassUnit, exerciseName, liftMass, liftMassUnit, sets, repetitions, variation, assistanceMass, extraMass } = input;
         const exerciseNameValue = exerciseName.toLowerCase().replace(/ /g, "-");
+        // NOTE: The API will accept post body as url encoded string, type does not matter here
         const formData = {
             "gender": gender,
             "ageyears": ageYears,
@@ -145,18 +147,4 @@ const calculateStrength = (gender, ageYears, bodyMass, bodyMassUnit, exerciseNam
         throw error;
     }
 });
-// strength(    
-//     "female",
-//     30,
-//     132,
-//     'lb',
-//     'hip-thrust',
-//     110,
-//     'lb',
-//     12,
-//     null,
-//     null,
-//     null)
-module.exports = {
-    calculateStrength
-};
+export default calculateStrength;
