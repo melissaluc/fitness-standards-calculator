@@ -1,15 +1,15 @@
 
 
 
-export function getEnumFromString<T extends Object>(value: string, enumType: T, isNull: boolean = false): T[keyof T] | null{
+export function getEnumFromString<T extends {}>(value: string, enumType: T, isNull: boolean = false): T[keyof T] | null{
     if(isNull){
         return null
     }
     
     const enumsKeywords = Object.entries(enumType);
     for (const [key, enumValue] of enumsKeywords) {
-        if(value === key) {
-            return enumValue
+        if(value.toLowerCase()=== key.toLowerCase()) {
+            return enumValue as T[keyof T]
         }
     }
 

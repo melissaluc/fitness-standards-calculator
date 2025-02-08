@@ -1,8 +1,9 @@
 import axios from 'axios';
 import qs from 'qs';
 import 'dotenv/config';
-import { load } from 'cheerio';
+import cheerio, { load } from 'cheerio';
 import {StrengthUser} from '../interfaces/types.js';
+import https from 'https'
 
 interface StrengthResult {
   strengthLevel: string;
@@ -14,7 +15,7 @@ interface StrengthResult {
   strengthBounds: Record<string, number>;
 }
 
-const parseHTML = async (htmlText: string) => {
+const parseHTML = async (htmlText: string): Promise<StrengthResult | undefined> => {
     try {
       // Load the HTML into cheerio
       const $ = load(htmlText);
@@ -35,13 +36,13 @@ const parseHTML = async (htmlText: string) => {
   
       // strength bound table headers and rows
       const headers:string[] = $('.section-box.liftresult .liftresult__standards table thead tr th')
-      .map((i: number, el: HTMLElement) => $(el).text().replace(/['".]/g, "").trim().toLowerCase())
+      .map((i: number, el: cheerio.Element) => $(el).text().replace(/['".]/g, "").trim().toLowerCase())
       .get();
 
       let strengthLevel = 'beginner';
       let next_strength_level = 'novice';
       const rows: number[] = $('.section-box.liftresult .liftresult__standards table tbody tr td')
-      .map((i: number, el) => {
+      .map((i: number, el: cheerio.Element) => {
         const $el = $(el);
         const value = $el.text().replace(/['".]/g, "").trim();
         const hasHighlightClass = $el.hasClass('has-background-tablehighlight'); 
@@ -82,7 +83,7 @@ const parseHTML = async (htmlText: string) => {
       }).get();
 
       // combine headers and rows
-      const zipped = headers.map((header, index) => [header, rows[index]]);
+      const zipped = headers.map((header: string, index: number) => [header, rows[index]]);
       const strengthBounds = Object.fromEntries(zipped);
       const bodyWeight = strengthBounds.bw
       delete strengthBounds.bw 
@@ -121,7 +122,7 @@ const parseHTML = async (htmlText: string) => {
   };
   
 // NOTE: Variation applies to some exercises are can take on values: bodyweight, weighted, assisted
-const calculateStrength = async (input : StrengthUser) =>{
+const calculateStrength = async (input : StrengthUser) : Promise< StrengthResult|undefined> => {
 
     try{
     
@@ -171,7 +172,11 @@ const calculateStrength = async (input : StrengthUser) =>{
   
         const urlEncodedString = qs.stringify(filteredFormData);
         console.log(urlEncodedString)
-  
+
+        const axiosInstance = axios.create({
+          httpsAgent: new https.Agent({ keepAlive: true }),
+      })
+
   
         // Set up the request config
         const config = {
@@ -185,7 +190,7 @@ const calculateStrength = async (input : StrengthUser) =>{
         };
         
         //request
-        const response = await axios.request(config)
+        const response = await axiosInstance.request(config)
         const htmlText = response.data;
         const result = await parseHTML(htmlText)
         return result;

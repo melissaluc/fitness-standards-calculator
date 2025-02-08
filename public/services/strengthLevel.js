@@ -1,17 +1,9 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 import axios from 'axios';
 import qs from 'qs';
 import 'dotenv/config';
 import { load } from 'cheerio';
-const parseHTML = (htmlText) => __awaiter(void 0, void 0, void 0, function* () {
+import https from 'https';
+const parseHTML = async (htmlText) => {
     try {
         // Load the HTML into cheerio
         const $ = load(htmlText);
@@ -102,9 +94,9 @@ const parseHTML = (htmlText) => __awaiter(void 0, void 0, void 0, function* () {
             console.error('An unknown error occurred');
         }
     }
-});
+};
 // NOTE: Variation applies to some exercises are can take on values: bodyweight, weighted, assisted
-const calculateStrength = (input) => __awaiter(void 0, void 0, void 0, function* () {
+const calculateStrength = async (input) => {
     try {
         const { gender, ageYears, bodyMass, bodyMassUnit, exerciseName, liftMass, liftMassUnit, sets, repetitions, variation, assistanceMass, extraMass } = input;
         const exerciseNameValue = exerciseName.toLowerCase().replace(/ /g, "-");
@@ -135,6 +127,9 @@ const calculateStrength = (input) => __awaiter(void 0, void 0, void 0, function*
         }, {});
         const urlEncodedString = qs.stringify(filteredFormData);
         console.log(urlEncodedString);
+        const axiosInstance = axios.create({
+            httpsAgent: new https.Agent({ keepAlive: true }),
+        });
         // Set up the request config
         const config = {
             method: 'post',
@@ -146,14 +141,14 @@ const calculateStrength = (input) => __awaiter(void 0, void 0, void 0, function*
             data: urlEncodedString
         };
         //request
-        const response = yield axios.request(config);
+        const response = await axiosInstance.request(config);
         const htmlText = response.data;
-        const result = yield parseHTML(htmlText);
+        const result = await parseHTML(htmlText);
         return result;
     }
     catch (error) {
         console.error('Error:', error.message);
         throw error;
     }
-});
+};
 export default calculateStrength;

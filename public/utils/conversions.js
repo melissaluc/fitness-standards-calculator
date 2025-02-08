@@ -4,7 +4,7 @@ export function getEnumFromString(value, enumType, isNull = false) {
     }
     const enumsKeywords = Object.entries(enumType);
     for (const [key, enumValue] of enumsKeywords) {
-        if (value === key) {
+        if (value.toLowerCase() === key.toLowerCase()) {
             return enumValue;
         }
     }

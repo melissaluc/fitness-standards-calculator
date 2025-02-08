@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import {StrengthUser, CardioUser, RequestBody} from './interfaces/types.js';
 import {Variation, Gender, Service} from './enums/types.js'
 import {getEnumFromString} from './utils/conversions.js'
-
+import cors from 'cors'
 import strengthCalculator from './services/strengthLevel.js';
 // import rowCalculator from './services/rowLevel.js';
 // import runCalculator from './services/runningLevel.js';
@@ -13,6 +13,7 @@ import strengthCalculator from './services/strengthLevel.js';
 const app= express();
 const port = 3000;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -27,7 +28,16 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Fitness Level Calculator API');
 });
 
+// Test endpoint
+// app.post('/', (req: Request, res: Response) => {
+//     console.log('Received POST request at /'); // Log request receipt
+//     console.log('Request Body:', JSON.stringify(req.body, null, 2)); // Log the request body
+//     res.send(JSON.stringify({msg:'got it!'}));
+// });
+
+
 app.post('/', async (req: Request<unknown, unknown, RequestBody<StrengthUser | CardioUser>>, res: Response): Promise<any> => {
+    console.log('Request Body:', JSON.stringify(req.body, null, 2))
     const { service, userInput } = req.body
     // TODO: set a type for result object
     let result: any;
@@ -35,12 +45,11 @@ app.post('/', async (req: Request<unknown, unknown, RequestBody<StrengthUser | C
     if (!service || !userInput) {
         return res.status(400).send({ success: false, error: 'Missing required params' });
     }
-
-    if (!userInput.gender || (userInput.gender !== 'male' && userInput.gender !== 'female')) {
+    if (!userInput.gender || (userInput.gender.toLowerCase() !== 'male' && userInput.gender.toLowerCase() !== 'female')) {
         return res.status(400).send({ success: false, error: 'Invalid gender' });
     } 
 
-    const gender = getEnumFromString(userInput.gender, Gender)
+    const gender = getEnumFromString(userInput.gender.toLowerCase(), Gender)
     if (gender){
         userInput.gender = gender
     }

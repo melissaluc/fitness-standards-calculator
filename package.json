@@ -5,11 +5,13 @@
   "scripts": {
     "build": "tsc",
     "start": "node public/index.js",
+    "dev": "nodemon public/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.4",
     "@types/cheerio": "^0.22.35",
+    "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",
@@ -19,8 +21,10 @@
   "dependencies": {
     "axios": "^1.7.9",
     "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "nodemon": "^3.1.9",
     "qs": "^6.14.0"
   }
 }
