@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import bodyParser from 'body-parser';
-import {StrengthUser, CardioUser} from './interfaces/types.js';
-import {Variation, Gender, Service} from './enums/types'
+import {StrengthUser, CardioUser, RequestBody} from './interfaces/types.js';
+import {Variation, Gender, Service} from './enums/types.js'
 import {getEnumFromString} from './utils/conversions.js'
 
 import strengthCalculator from './services/strengthLevel.js';
@@ -16,13 +16,18 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+function isStrengthUser(userInput: StrengthUser | CardioUser): userInput is StrengthUser {
+    return (userInput as StrengthUser).variation !== undefined;
+  }
+
+
 // TODO: figure out what format to send the documentation in
 app.get('/', (req: Request, res: Response) => {
     // TODO: put documentation here
     res.send('Fitness Level Calculator API');
 });
 
-app.post('/', (req, res) => {
+app.post('/', async (req: Request<unknown, unknown, RequestBody<StrengthUser | CardioUser>>, res: Response): Promise<any> => {
     const { service, userInput } = req.body
     // TODO: set a type for result object
     let result: any;
@@ -31,21 +36,26 @@ app.post('/', (req, res) => {
         return res.status(400).send({ success: false, error: 'Missing required params' });
     }
 
-    if (userInput.gender !== 'male' && userInput.gender !== 'female') {
+    if (!userInput.gender || (userInput.gender !== 'male' && userInput.gender !== 'female')) {
         return res.status(400).send({ success: false, error: 'Invalid gender' });
-    } else {
-        const gender = getEnumFromString(userInput.gender, Gender)
+    } 
+
+    const gender = getEnumFromString(userInput.gender, Gender)
+    if (gender){
+        userInput.gender = gender
     }
 
-    if (userInput.variation){
-        const variation = getEnumFromString(userInput.variation, Variation)
+    if (isStrengthUser(userInput)) {
+        if (userInput.variation) {
+        const variation = getEnumFromString(userInput.variation, Variation, true);
+        userInput.variation = variation;
+        }
     }
-
 
     try {
         switch (service) {
             case Service.Strength:
-                result = strengthCalculator(userInput as StrengthUser);
+                result = await strengthCalculator(userInput as StrengthUser);
                 break;
             // case Service.Row:
             //     result = rowCalculator(userInput as CardioUser);
@@ -60,12 +70,12 @@ app.post('/', (req, res) => {
             //     result = cycleCalculator(userInput as CardioUser);
             //     break;
             default:
-                return res.status(400).send({ success: false, error: 'Unknown service' });
+                // return res.status(400).send({ success: false, error: 'Unknown service' });
         }
 
         // If the result doesn't match your expected structure, return an error response
         if (!result) {
-            return res.status(500).send({ success: false, error: 'Error processing the service request' });
+            // return res.status(500).send({ success: false, error: 'Error processing the service request' });
         }
 
         // Return a successful response with the result

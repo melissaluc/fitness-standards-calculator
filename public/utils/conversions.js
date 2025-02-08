@@ -1,5 +1,5 @@
-export function getEnumFromString(value, enumType) {
-    if (value === null) {
+export function getEnumFromString(value, enumType, isNull = false) {
+    if (isNull) {
         return null;
     }
     const enumsKeywords = Object.entries(enumType);
@@ -8,5 +8,5 @@ export function getEnumFromString(value, enumType) {
             return enumValue;
         }
     }
-    return null;
+    throw new Error(`Invalid enum value: ${value}`);
 }

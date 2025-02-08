@@ -1,7 +1,7 @@
 export enum Variation {
     Bodyweight = 'bodyweight',
     Weighted = 'weighted',
-    Assisted = 'assisted'
+    Assisted = 'assisted',
 }
 
 export enum Gender {

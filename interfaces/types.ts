@@ -1,4 +1,4 @@
-import {Variation, Gender, Service} from '../enums/types'
+import {Variation, Gender, Service} from '../enums/types.js'
 
 export interface UserStats {
     gender: Gender;
@@ -30,6 +30,8 @@ export interface RequestBody<T> {
     service: Service;
     userInput: T
 }
+
+
 
 //User Stats
 // gender: male | female

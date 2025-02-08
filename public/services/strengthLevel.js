@@ -10,11 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import axios from 'axios';
 import qs from 'qs';
 import 'dotenv/config';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 const parseHTML = (htmlText) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // Load the HTML into cheerio
-        const $ = cheerio.load(htmlText);
+        const $ = load(htmlText);
         // one-rep max
         const oneRepMaxMatch = $('.section-box.liftresult div#liftResults .content').text().match(/\b\d+(\.\d+)?\b/g);
         const oneRepMax = oneRepMaxMatch ? oneRepMaxMatch[0] : null;

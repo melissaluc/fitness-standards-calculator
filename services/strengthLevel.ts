@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import 'dotenv/config';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 import {StrengthUser} from '../interfaces/types.js';
 
 interface StrengthResult {
@@ -17,7 +17,7 @@ interface StrengthResult {
 const parseHTML = async (htmlText: string) => {
     try {
       // Load the HTML into cheerio
-      const $ = cheerio.load(htmlText);
+      const $ = load(htmlText);
   
       // one-rep max
       const oneRepMaxMatch: RegExpMatchArray | null = $('.section-box.liftresult div#liftResults .content').text().match(/\b\d+(\.\d+)?\b/g)
@@ -35,7 +35,7 @@ const parseHTML = async (htmlText: string) => {
   
       // strength bound table headers and rows
       const headers:string[] = $('.section-box.liftresult .liftresult__standards table thead tr th')
-      .map((i, el) => $(el).text().replace(/['".]/g, "").trim().toLowerCase())
+      .map((i: number, el: HTMLElement) => $(el).text().replace(/['".]/g, "").trim().toLowerCase())
       .get();
 
       let strengthLevel = 'beginner';

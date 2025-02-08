@@ -1,9 +1,9 @@
 
 
 
-export function getEnumFromString<T extends Object>(value: string, enumType: T): T[keyof T] | null{
-    if (value === null) {
-        return null;
+export function getEnumFromString<T extends Object>(value: string, enumType: T, isNull: boolean = false): T[keyof T] | null{
+    if(isNull){
+        return null
     }
     
     const enumsKeywords = Object.entries(enumType);
@@ -13,7 +13,7 @@ export function getEnumFromString<T extends Object>(value: string, enumType: T):
         }
     }
 
-    return null
+    throw new Error(`Invalid enum value: ${value}`)
 }
 
 
