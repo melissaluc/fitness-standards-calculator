@@ -74,7 +74,6 @@ const parseHTML = async (htmlText) => {
         console.log('Lift:', lift);
         console.log('Strength Bounds:', renamedObj);
         console.log('Body Weight:', bodyWeight);
-        // TODO: add interface for output
         const results = {
             strengthLevel,
             bodyWeight,
@@ -140,7 +139,7 @@ const calculateStrength = async (input) => {
             },
             data: urlEncodedString
         };
-        //request
+        //FIXME: works for 
         const response = await axiosInstance.request(config);
         const htmlText = response.data;
         const result = await parseHTML(htmlText);

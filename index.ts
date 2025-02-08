@@ -1,21 +1,43 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application, Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
 import {StrengthUser, CardioUser, RequestBody} from './interfaces/types.js';
 import {Variation, Gender, Service} from './enums/types.js'
 import {getEnumFromString} from './utils/conversions.js'
 import cors from 'cors'
+import { FileSystemTree, WebContainer } from '@webcontainer/api'
+
 import strengthCalculator from './services/strengthLevel.js';
 // import rowCalculator from './services/rowLevel.js';
 // import runCalculator from './services/runningLevel.js';
 // import cycleCalculator from './services/cycleLevel.js';
 // import swimCalculator from './services/swimLevel.js';
 
-const app= express();
+const app: Application= express();
 const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use((req: Request, res: Response, next: NextFunction) => {
+    res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+    next();
+});
+
+
+
+// NOTE: Serve index.js only for webcontainers
+// let webcontainer: WebContainer;
+const files: FileSystemTree = {
+    'index.js': {
+        file: {
+            contents: 'console.log("Hello!")',
+        },
+    },
+};
+
+
+
 
 function isStrengthUser(userInput: StrengthUser | CardioUser): userInput is StrengthUser {
     return (userInput as StrengthUser).variation !== undefined;
@@ -95,6 +117,8 @@ app.post('/', async (req: Request<unknown, unknown, RequestBody<StrengthUser | C
         res.status(500).send({ success: false, error: 'Internal server error' });
     }
 });
+
+
 
 
 app.listen(port, () => {

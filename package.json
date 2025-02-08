@@ -19,6 +19,8 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@types/filesystem": "^0.0.36",
+    "@webcontainer/api": "^1.5.1-internal.8",
     "axios": "^1.7.9",
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",
