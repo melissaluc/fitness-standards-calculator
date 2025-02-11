@@ -5,7 +5,7 @@ import { getEnumFromString } from './utils/conversions.js';
 import cors from 'cors';
 import strengthCalculator from './services/strengthLevel.js';
 // import rowCalculator from './services/rowLevel.js';
-// import runCalculator from './services/runningLevel.js';
+import runCalculator from './services/runLevel.js';
 // import cycleCalculator from './services/cycleLevel.js';
 // import swimCalculator from './services/swimLevel.js';
 const app = express();
@@ -35,12 +35,22 @@ app.get('/', (req, res) => {
     // TODO: put documentation here
     res.send('Fitness Level Calculator API');
 });
+app.get('/strength-exercises', (req, res) => {
+    res.send('Return list of strength exercises');
+});
+// app.get('/strength', (req: Request, res: Response) => {
+//     res.send('Determine Strength Level given an exercise to get Calculation Results');
+// });
+// app.get('/cardio', (req: Request, res: Response) => {
+//     res.send('Select Cardio Activity to get Calculation Results');
+// });
 // Test endpoint
 // app.post('/', (req: Request, res: Response) => {
 //     console.log('Received POST request at /'); // Log request receipt
 //     console.log('Request Body:', JSON.stringify(req.body, null, 2)); // Log the request body
 //     res.send(JSON.stringify({msg:'got it!'}));
 // });
+// TODO: separate services into routes
 app.post('/', async (req, res) => {
     console.log('Request Body:', JSON.stringify(req.body, null, 2));
     const { service, userInput } = req.body;
@@ -73,9 +83,9 @@ app.post('/', async (req, res) => {
             // case Service.Swim:
             //     result = swimCalculator(userInput as CardioUser);
             //     break;
-            // case Service.Run:
-            //     result = runCalculator(userInput as CardioUser);
-            //     break;
+            case Service.Run:
+                result = await runCalculator(userInput);
+                break;
             // case Service.Cycle:
             //     result = cycleCalculator(userInput as CardioUser);
             //     break;
@@ -84,7 +94,7 @@ app.post('/', async (req, res) => {
         }
         // If the result doesn't match your expected structure, return an error response
         if (!result) {
-            // return res.status(500).send({ success: false, error: 'Error processing the service request' });
+            return res.status(500).send({ success: false, error: 'Error processing the service request' });
         }
         // Return a successful response with the result
         res.send({ success: true, result });
