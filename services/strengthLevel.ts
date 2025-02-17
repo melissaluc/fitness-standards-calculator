@@ -4,17 +4,16 @@ import 'dotenv/config';
 import cheerio, { load } from 'cheerio';
 import {StrengthUser} from '../interfaces/types.js';
 import https from 'https'
-import e from 'express';
 
 // TODO: move to a Interface folder
 interface StrengthResult {
-  strengthLevel: string;
-  bodyWeight: number;
+  strength_level: string;
+  body_weight: number;
   next_strength_level: string;
   one_rep_max: number;
   relative_strength_demographic: number;
   relative_strength: number;
-  strengthBounds: Record<string, number>;
+  strength_bounds: Record<string, number>;
 }
 
 const parseHTML = async (htmlText: string): Promise<StrengthResult | undefined> => {
@@ -104,13 +103,13 @@ const parseHTML = async (htmlText: string): Promise<StrengthResult | undefined> 
       console.log('Body Weight:', bodyWeight);
 
       const results: StrengthResult = {
-        strengthLevel,
-        bodyWeight,
+        strength_level: strengthLevel,
+        body_weight: bodyWeight,
         next_strength_level,
         one_rep_max: oneRepMax ? parseFloat(oneRepMax) : -1,
         relative_strength_demographic: compare ? parseFloat(compare) : -1,
         relative_strength: lift ? parseFloat(lift) : -1,
-        strengthBounds: renamedObj
+        strength_bounds: renamedObj
     }
     return results
     } catch (error: unknown) {
