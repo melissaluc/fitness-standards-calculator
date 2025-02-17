@@ -186,7 +186,7 @@ const calculateRun = async (input : CardioUser) : Promise< CardioResults | undef
         const config = {
           method: 'post',
           maxBodyLength: Infinity,
-          url: 'https://runninglevel.com/',
+          url: process.env.runCalculatorURL,
           headers: { 
             'Content-Type': 'application/x-www-form-urlencoded'
           },

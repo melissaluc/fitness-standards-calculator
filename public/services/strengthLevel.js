@@ -133,7 +133,7 @@ const calculateStrength = async (input) => {
         const config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: 'https://strengthlevel.com/',
+            url: process.env.strengthCalculatorURL,
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
