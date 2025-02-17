@@ -4,6 +4,7 @@ import 'dotenv/config';
 import cheerio, { load } from 'cheerio';
 import {StrengthUser} from '../interfaces/types.js';
 import https from 'https'
+import e from 'express';
 
 interface StrengthResult {
   strengthLevel: string;
@@ -182,7 +183,7 @@ const calculateStrength = async (input : StrengthUser) : Promise< StrengthResult
         const config = {
           method: 'post',
           maxBodyLength: Infinity,
-          url: 'https://strengthlevel.com/',
+          url: process.env.strengthCalculatorURL,
           headers: { 
             'Content-Type': 'application/x-www-form-urlencoded'
           },
