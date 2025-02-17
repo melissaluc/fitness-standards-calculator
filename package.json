@@ -17,9 +17,14 @@
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",
     "@types/qs": "^6.9.18",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "eslint": "^9.20.0",
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@types/filesystem": "^0.0.36",
+    "@webcontainer/api": "^1.5.1-internal.8",
     "axios": "^1.7.9",
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",

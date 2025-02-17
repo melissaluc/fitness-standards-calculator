@@ -6,6 +6,7 @@ import {StrengthUser} from '../interfaces/types.js';
 import https from 'https'
 import e from 'express';
 
+// TODO: move to a Interface folder
 interface StrengthResult {
   strengthLevel: string;
   bodyWeight: number;
@@ -102,7 +103,6 @@ const parseHTML = async (htmlText: string): Promise<StrengthResult | undefined> 
       console.log('Strength Bounds:', renamedObj);
       console.log('Body Weight:', bodyWeight);
 
-      // TODO: add interface for output
       const results: StrengthResult = {
         strengthLevel,
         bodyWeight,
@@ -190,7 +190,7 @@ const calculateStrength = async (input : StrengthUser) : Promise< StrengthResult
           data: urlEncodedString
         };
         
-        //request
+        //FIXME: works for 
         const response = await axiosInstance.request(config)
         const htmlText = response.data;
         const result = await parseHTML(htmlText)
