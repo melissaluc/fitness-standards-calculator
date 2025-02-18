@@ -25,9 +25,9 @@ const parseHTML = async (htmlText) => {
         const rows = $('.section-box.liftresult .liftresult__standards table tbody tr td')
             .map((i, el) => {
             const $el = $(el);
-            const value = $el.text().replace(/['".]/g, "").trim();
+            const value = $el.text().replace(/['".<]/g, "").trim();
             const hasHighlightClass = $el.hasClass('has-background-tablehighlight');
-            console.log('Index:', i, 'Value:', value, 'hasHighlightClass:', hasHighlightClass);
+            // console.log('Index:', i, 'Value:', value, 'hasHighlightClass:', hasHighlightClass);
             if (hasHighlightClass) {
                 switch (i) {
                     case 1:
@@ -75,13 +75,13 @@ const parseHTML = async (htmlText) => {
         console.log('Strength Bounds:', renamedObj);
         console.log('Body Weight:', bodyWeight);
         const results = {
-            strengthLevel,
-            bodyWeight,
+            strength_level: strengthLevel,
+            body_weight: bodyWeight,
             next_strength_level,
             one_rep_max: oneRepMax ? parseFloat(oneRepMax) : -1,
             relative_strength_demographic: compare ? parseFloat(compare) : -1,
             relative_strength: lift ? parseFloat(lift) : -1,
-            strengthBounds: renamedObj
+            strength_bounds: renamedObj
         };
         return results;
     }
@@ -100,13 +100,30 @@ const calculateStrength = async (input) => {
         const { gender, ageYears, bodyMass, bodyMassUnit, exerciseName, liftMass, liftMassUnit, sets, repetitions, variation, assistanceMass, extraMass } = input;
         const exerciseNameValue = exerciseName.toLowerCase().replace(/ /g, "-");
         // NOTE: The API will accept post body as url encoded string, type does not matter here
-        const formData = {
+        let formDataVariation = null;
+        if (variation === 'assisted' && !liftMass) {
+            formDataVariation = {
+                "variation": variation,
+                "assistancemass": assistanceMass,
+            };
+        }
+        else if (variation === 'weighted' && !liftMass) {
+            formDataVariation = {
+                "variation": variation,
+                "extramass": extraMass
+            };
+        }
+        else {
+            formDataVariation = {
+                "variation": variation,
+            };
+        }
+        const formDataBase = {
             "gender": gender,
             "ageyears": ageYears,
             "bodymass": bodyMass,
             "bodymassunit": bodyMassUnit,
             "exercise": exerciseNameValue,
-            "liftmass": liftMass,
             "liftmassunit": liftMassUnit,
             "repetitions": repetitions,
             "timezone": -4,
@@ -114,10 +131,12 @@ const calculateStrength = async (input) => {
             "modalsearch": "",
             "modalbodypart": "",
             "modalcategory": "",
-            "variation": variation,
-            "assistancemass": assistanceMass,
-            "extramass": extraMass
         };
+        const formData = {
+            ...formDataBase,
+            ...(formDataVariation ? formDataVariation : { "liftmass": liftMass, }),
+        };
+        console.log(formData);
         const filteredFormData = Object.entries(formData)
             .filter(([key, value]) => value != null)
             .reduce((acc, [key, value]) => {

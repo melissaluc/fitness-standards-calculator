@@ -29,7 +29,8 @@ router.post('/', async (req: Request<unknown, unknown, RequestBody<StrengthUser 
 
   if (isStrengthUser(userInput)) {
     if (userInput.variation) {
-      const variation = getEnumFromString(userInput.variation, Variation, true);
+      const variation = getEnumFromString(userInput.variation.toLowerCase(), Variation, userInput.variation===null);
+      console.log('variation:', variation)
       userInput.variation = variation;
     }
   }
