@@ -1,6 +1,6 @@
 # Fitness Level API
 
-**Status**: under development (see develop branch)
+**Status**: under development (see develop branch)  
 API documentation can be found [here](https://app.swaggerhub.com/apis/melissaluc-2c5/fitness-calculator/1.0.0)
 
 ## About
